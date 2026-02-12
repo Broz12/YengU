@@ -52,6 +52,10 @@
     return fallback;
   }
 
+  function getEmailRedirectUrl() {
+    return window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/") + "account.html";
+  }
+
   function bindAuthPage(client) {
     var tabs = document.querySelectorAll(".auth-tab");
     var forms = document.querySelectorAll(".auth-form");
@@ -86,6 +90,7 @@
 
     var signInForm = document.getElementById("sign-in-form");
     var signUpForm = document.getElementById("sign-up-form");
+    var resendButton = document.getElementById("resend-confirmation-btn");
 
     if (signInForm) {
       signInForm.addEventListener("submit", async function (event) {
@@ -101,7 +106,11 @@
         });
 
         if (result.error) {
-          setStatus(status, "error", getMessage(result.error, "Login failed."));
+          var message = getMessage(result.error, "Login failed.");
+          if (/email.*confirm/i.test(message)) {
+            message = "Email not confirmed. Use \"Resend Verification Email\" and check spam/promotions.";
+          }
+          setStatus(status, "error", message);
           return;
         }
 
@@ -122,7 +131,7 @@
           email: email,
           password: password,
           options: {
-            emailRedirectTo: window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/") + "account.html",
+            emailRedirectTo: getEmailRedirectUrl(),
           },
         });
 
@@ -132,6 +141,40 @@
         }
 
         setStatus(status, "success", "Signup successful. Check your email to verify your account if confirmation is enabled.");
+      });
+    }
+
+    if (resendButton) {
+      resendButton.addEventListener("click", async function () {
+        var email = "";
+        if (signInForm && signInForm.email && signInForm.email.value) {
+          email = signInForm.email.value.trim();
+        }
+        if (!email && signUpForm && signUpForm.email && signUpForm.email.value) {
+          email = signUpForm.email.value.trim();
+        }
+
+        if (!email) {
+          setStatus(status, "error", "Enter your email first, then click resend.");
+          return;
+        }
+
+        setStatus(status, "info", "Sending verification email...");
+
+        var resendResult = await client.auth.resend({
+          type: "signup",
+          email: email,
+          options: {
+            emailRedirectTo: getEmailRedirectUrl(),
+          },
+        });
+
+        if (resendResult.error) {
+          setStatus(status, "error", getMessage(resendResult.error, "Could not resend verification email."));
+          return;
+        }
+
+        setStatus(status, "success", "Verification email sent. Check inbox, spam, and promotions tabs.");
       });
     }
   }
