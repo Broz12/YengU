@@ -75,6 +75,17 @@
         event_label: platform + "_" + productId,
       });
     }
+
+    // Emit app-level event so optional backends can persist click telemetry.
+    window.dispatchEvent(
+      new CustomEvent("yengu:affiliate_click", {
+        detail: {
+          platform: platform,
+          productId: productId,
+          pagePath: window.location.pathname,
+        },
+      })
+    );
   }
 
   window.trackClick = trackClick;

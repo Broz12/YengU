@@ -32,12 +32,23 @@ Steps:
 
 If auth config is empty, forms stay visible but show a setup error and do not authenticate.
 
+## Supabase/Postgres Data Setup
+This site also writes data to Supabase/Postgres for:
+- Email capture forms
+- Affiliate click telemetry
+
+Run schema:
+- `supabase/schema.sql`
+
+Setup guide:
+- `docs/supabase-postgres-setup.md`
+
 ## Update Pricing & Availability
 - Update prices and stock status inside each review page.
 - Update the `Price last checked` timestamp on each review page.
 
 ## Click Tracking
-Affiliate link clicks are tracked via `js/affiliate-tracker.js`. You can connect analytics by adding your GA tag and enabling the `gtag` call.
+Affiliate link clicks are tracked via `js/affiliate-tracker.js`. Optional persistence to Supabase is handled by `js/supabase-data.js`.
 
 ## File Structure
 ```
@@ -62,11 +73,15 @@ Affiliate link clicks are tracked via `js/affiliate-tracker.js`. You can connect
 │   ├── affiliate-tracker.js
 │   ├── auth-config.js
 │   ├── auth.js
-│   └── price-comparison.js
+│   ├── price-comparison.js
+│   └── supabase-data.js
 ├── auth.html
 ├── account.html
 ├── docs/
-│   └── cloudflare-access-setup.md
+│   ├── cloudflare-access-setup.md
+│   └── supabase-postgres-setup.md
+├── supabase/
+│   └── schema.sql
 ├── images/
 │   └── products/
 │       ├── aurora-silk-gown.svg
