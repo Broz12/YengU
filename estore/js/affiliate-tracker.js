@@ -1,4 +1,68 @@
 (function () {
+  var affiliateConfig = Object.assign(
+    {
+      amazonTag: "",
+      flipkartAffid: "",
+      myntraSource: "affiliate",
+      productQueries: {},
+      linkOverrides: {},
+    },
+    window.YENGU_AFFILIATE || {}
+  );
+
+  function getFallbackQuery(productId) {
+    return String(productId || "")
+      .replace(/^yg-/, "")
+      .replace(/-/g, " ")
+      .trim();
+  }
+
+  function buildRetailerUrl(platform, productId) {
+    var overrideKey = platform + ":" + productId;
+    var directOverride = affiliateConfig.linkOverrides[overrideKey];
+    if (directOverride) return directOverride;
+
+    var query = affiliateConfig.productQueries[productId] || getFallbackQuery(productId);
+
+    if (platform === "amazon") {
+      var amazonUrl = new URL("https://www.amazon.in/s");
+      if (query) amazonUrl.searchParams.set("k", query);
+      if (affiliateConfig.amazonTag) amazonUrl.searchParams.set("tag", affiliateConfig.amazonTag);
+      return amazonUrl.toString();
+    }
+
+    if (platform === "flipkart") {
+      var flipkartUrl = new URL("https://www.flipkart.com/search");
+      if (query) flipkartUrl.searchParams.set("q", query);
+      if (affiliateConfig.flipkartAffid) flipkartUrl.searchParams.set("affid", affiliateConfig.flipkartAffid);
+      return flipkartUrl.toString();
+    }
+
+    if (platform === "myntra") {
+      var myntraUrl = new URL("https://www.myntra.com/");
+      if (query) myntraUrl.searchParams.set("q", query);
+      if (affiliateConfig.myntraSource) myntraUrl.searchParams.set("utm_source", affiliateConfig.myntraSource);
+      return myntraUrl.toString();
+    }
+
+    return "";
+  }
+
+  function applyAffiliateUrls() {
+    var links = document.querySelectorAll(".affiliate-link");
+
+    links.forEach(function (link) {
+      var platform = link.getAttribute("data-platform") || "";
+      var productId = link.getAttribute("data-product") || "";
+      if (!platform || !productId) return;
+
+      var nextHref = buildRetailerUrl(platform, productId);
+      if (nextHref) {
+        link.setAttribute("href", nextHref);
+      }
+    });
+  }
+
   // Track affiliate clicks for analytics attribution.
   function trackClick(platform, productId) {
     console.log("Click tracked:", platform, productId);
@@ -14,6 +78,7 @@
   }
 
   window.trackClick = trackClick;
+  applyAffiliateUrls();
 
   document.addEventListener("click", function (event) {
     var link = event.target.closest(".affiliate-link");

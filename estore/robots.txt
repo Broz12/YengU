@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Temporary hardening: remove once Cloudflare Access is active
+# and you intentionally want indexing.
