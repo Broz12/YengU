@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.supabase.co wss://*.supabase.co; upgrade-insecure-requests" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
+  <title>Login or Sign Up | YengU</title>
+  <meta name="description" content="Securely log in or create your YengU account." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body data-page="auth">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">YU</span>
+        <span>YengU</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="category/dresses.html">Dresses</a>
+        <a href="category/handbags.html">Handbags</a>
+        <a href="guides/luxury-fashion-buying-guide.html">Guides</a>
+        <a href="about.html">About</a>
+        <a href="disclosure.html">Disclosure</a>
+        <a href="auth.html">Login / Sign Up</a>
+        <a href="account.html">Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="auth-shell">
+    <div class="container auth-grid">
+      <section class="auth-panel">
+        <h1 class="section-title" style="margin-bottom: 10px;">Login or create account</h1>
+        <p class="section-subtitle" style="margin-bottom: 0;">Account access enables member-only alerts and future saved-product features.</p>
+
+        <div class="auth-tabs" role="tablist" aria-label="Auth form selector">
+          <button class="auth-tab active" type="button" data-target="sign-in-form" role="tab" aria-selected="true">Log In</button>
+          <button class="auth-tab" type="button" data-target="sign-up-form" role="tab" aria-selected="false">Sign Up</button>
+        </div>
+
+        <form class="auth-form" id="sign-in-form" novalidate>
+          <label for="signin-email">Email</label>
+          <input id="signin-email" type="email" name="email" autocomplete="email" required />
+
+          <label for="signin-password">Password</label>
+          <input id="signin-password" type="password" name="password" autocomplete="current-password" required />
+
+          <div class="auth-actions">
+            <button class="button" type="submit">Log In</button>
+          </div>
+        </form>
+
+        <form class="auth-form" id="sign-up-form" novalidate hidden>
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" name="email" autocomplete="email" required />
+
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" name="password" autocomplete="new-password" minlength="8" required />
+
+          <div class="auth-actions">
+            <button class="button" type="submit">Create Account</button>
+          </div>
+        </form>
+
+        <div id="auth-status" class="auth-status" aria-live="polite"></div>
+      </section>
+
+      <aside class="auth-help">
+        <h2 class="section-title" style="font-size: 1.7rem; margin-bottom: 10px;">Security-first access</h2>
+        <p style="margin-bottom: 14px;">YengU uses external identity services for authentication so credentials are not stored in this static website codebase.</p>
+        <ul style="list-style: none; display: grid; gap: 8px;">
+          <li>Encrypted session tokens</li>
+          <li>Password reset and email verification support</li>
+          <li>Works with GitHub Pages deployment</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 10px;">
+          <span class="brand-mark">YU</span>
+          <span>YengU</span>
+        </div>
+        <p>Luxury fashion discovery with honest reviews and affiliate transparency.</p>
+      </div>
+      <div>
+        <strong>Explore</strong>
+        <ul style="list-style: none; margin-top: 10px; display: grid; gap: 6px;">
+          <li><a href="category/dresses.html">Dresses</a></li>
+          <li><a href="category/handbags.html">Handbags</a></li>
+          <li><a href="guides/luxury-fashion-buying-guide.html">Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Transparency</strong>
+        <ul style="list-style: none; margin-top: 10px; display: grid; gap: 6px;">
+          <li><a href="about.html">How We Review</a></li>
+          <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+        </ul>
+      </div>
+      <div class="disclosure">
+        <strong>Affiliate disclosure</strong>
+        <p>YengU participates in affiliate programs. If you click links and buy, we may earn a commission at no extra cost to you.</p>
+      </div>
+    </div>
+    <div class="container footer-credit">Developed by Brojendro Ningthoujam</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth-config.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

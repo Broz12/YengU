@@ -1,0 +1,123 @@
+.auth-shell {
+  padding: 56px 0 72px;
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.auth-panel,
+.auth-help,
+.account-panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.auth-help {
+  background: linear-gradient(140deg, #24423b, #1e332d);
+  color: #f8f5f0;
+}
+
+.auth-help p,
+.auth-help li {
+  color: rgba(248, 245, 240, 0.88);
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0 20px;
+}
+
+.auth-tab {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-tab.active {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: #fff;
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-form[hidden] {
+  display: none;
+}
+
+.auth-form label {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.auth-form input {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 1rem;
+}
+
+.auth-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.auth-status {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+}
+
+.auth-status.is-info {
+  background: rgba(36, 66, 59, 0.1);
+  border-color: rgba(36, 66, 59, 0.25);
+  color: #1f3c35;
+}
+
+.auth-status.is-error {
+  background: rgba(180, 91, 60, 0.12);
+  border-color: rgba(180, 91, 60, 0.32);
+  color: #7a3722;
+}
+
+.auth-status.is-success {
+  background: rgba(31, 111, 92, 0.12);
+  border-color: rgba(31, 111, 92, 0.3);
+  color: #175646;
+}
+
+.account-meta {
+  display: grid;
+  gap: 10px;
+}
+
+.account-meta code {
+  font-size: 0.9rem;
+  background: rgba(36, 66, 59, 0.08);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .auth-grid {
+    grid-template-columns: 1fr;
+  }
+}

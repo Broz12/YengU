@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.supabase.co wss://*.supabase.co; upgrade-insecure-requests" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
-  <title>Affiliate Disclosure | YengU</title>
-  <meta name="description" content="Affiliate disclosure, terms of service, and privacy policy for YengU." />
+  <title>My Account | YengU</title>
+  <meta name="description" content="Manage your YengU account session." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
 </head>
-<body>
+<body data-page="account">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="container header-inner">
@@ -37,41 +38,23 @@
     </div>
   </header>
 
-  <main id="main" class="section">
-    <div class="container">
-      <h1 class="section-title">Affiliate Disclosure</h1>
-      <div class="card" style="margin-top: 24px;">
-        <p><strong>AFFILIATE DISCLOSURE</strong></p>
-        <p>Yengu participates in affiliate marketing programs. This means when you click on certain links on this site and make a purchase, we may receive a commission at no extra cost to you. This helps us keep our content free and continue providing honest reviews. We only recommend products we genuinely believe in. Our opinions are always our own and are not influenced by affiliate partnerships. Prices and availability are subject to change. Please check the retailer's website for current information.</p>
-      </div>
+  <main id="main" class="auth-shell">
+    <div class="container" style="max-width: 760px;">
+      <section class="account-panel">
+        <h1 class="section-title" style="margin-bottom: 10px;">My Account</h1>
+        <p class="section-subtitle" style="margin-bottom: 8px;">Session and profile details for your member access.</p>
 
-      <section style="margin-top: 36px; display: grid; gap: 20px;">
-        <div class="card">
-          <h2>Terms of Service (Summary)</h2>
-          <ul style="list-style: none; display: grid; gap: 8px;">
-            <li>YengU does not sell products directly and is not responsible for product quality.</li>
-            <li>Returns, refunds, and customer service are handled by the retailer.</li>
-            <li>Prices and stock shown may not be current; always verify on the retailer's site.</li>
-            <li>We provide information "as is" without warranties or guarantees.</li>
-          </ul>
+        <div class="account-meta">
+          <p><strong>Email:</strong> <span id="account-email">Loading...</span></p>
+          <p><strong>User ID:</strong> <code id="account-user-id">Loading...</code></p>
         </div>
-        <div class="card">
-          <h2>Privacy Policy (Summary)</h2>
-          <ul style="list-style: none; display: grid; gap: 8px;">
-            <li>We track affiliate link clicks and on-site analytics to improve content.</li>
-            <li>Cookies may be used by third-party retailers and analytics tools.</li>
-            <li>We do not store payment information or process transactions.</li>
-            <li>Any email capture is used only for alerts and updates; unsubscribe anytime.</li>
-          </ul>
-        </div>
-      </section>
 
-      <section style="margin-top: 36px;">
-        <h2 class="section-title">How We Make Money</h2>
-        <p class="section-subtitle">Affiliate commissions allow us to fund product testing, editorial research, and ongoing price updates.</p>
-        <div class="card">
-          <p>When you click an affiliate link and complete a purchase on the retailer's website, we may earn a commission (typically 2-8%). This does not affect your price. Our product rankings are based on quality, fit, and value - not commissions.</p>
+        <div class="auth-actions" style="margin-top: 18px;">
+          <button id="logout-btn" class="button secondary" type="button">Log Out</button>
+          <a class="button" href="index.html">Back to Home</a>
         </div>
+
+        <div id="account-status" class="auth-status" aria-live="polite"></div>
       </section>
     </div>
   </main>
@@ -107,5 +90,9 @@
     </div>
     <div class="container footer-credit">Developed by Brojendro Ningthoujam</div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth-config.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>

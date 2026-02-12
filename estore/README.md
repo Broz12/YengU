@@ -14,6 +14,24 @@ Set affiliate IDs in `js/affiliate-config.js`:
 
 Product links are generated automatically from platform + product IDs in page markup. Optional direct URL overrides are also supported in `linkOverrides`.
 
+## Login / Signup Setup (Supabase)
+This site includes secure auth pages:
+- `auth.html`
+- `account.html`
+
+Configure credentials in `js/auth-config.js`:
+- `supabaseUrl`
+- `supabaseAnonKey`
+
+Steps:
+1. Create a Supabase project.
+2. Enable Email auth provider in Supabase Authentication settings.
+3. Add your production URL to Supabase redirect URLs:
+- `https://broz12.github.io/YengU/estore/account.html`
+4. Paste project URL and anon key into `js/auth-config.js`.
+
+If auth config is empty, forms stay visible but show a setup error and do not authenticate.
+
 ## Update Pricing & Availability
 - Update prices and stock status inside each review page.
 - Update the `Price last checked` timestamp on each review page.
@@ -36,12 +54,17 @@ Affiliate link clicks are tracked via `js/affiliate-tracker.js`. You can connect
 │   ├── dresses.html
 │   └── handbags.html
 ├── css/
+│   ├── auth.css
 │   ├── style.css
 │   └── review-page.css
 ├── js/
 │   ├── affiliate-config.js
 │   ├── affiliate-tracker.js
+│   ├── auth-config.js
+│   ├── auth.js
 │   └── price-comparison.js
+├── auth.html
+├── account.html
 ├── docs/
 │   └── cloudflare-access-setup.md
 ├── images/
@@ -59,6 +82,7 @@ Affiliate link clicks are tracked via `js/affiliate-tracker.js`. You can connect
 - Pages include `noindex` and security meta policies (CSP, referrer policy, permissions policy).
 - Inline affiliate `onclick` handlers were removed to support stricter CSP behavior.
 - Cloudflare Access rollout steps are documented in `docs/cloudflare-access-setup.md`.
+- Auth pages use Supabase (`@supabase/supabase-js`) and only store session tokens from that provider.
 
 ## Platform Notes
 - All purchase buttons are external affiliate links.
