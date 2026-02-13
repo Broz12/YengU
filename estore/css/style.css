@@ -119,8 +119,10 @@ input:focus {
 
 .header-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 10px 16px;
   padding: 18px 0;
 }
 
@@ -131,6 +133,7 @@ input:focus {
   font-family: "Playfair Display", serif;
   font-size: 1.4rem;
   letter-spacing: 0.04em;
+  margin-right: auto;
 }
 
 .brand-mark {
@@ -151,8 +154,72 @@ input:focus {
 
 .nav {
   display: flex;
+  width: 100%;
+  order: 3;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 18px;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(225, 214, 203, 0.85);
   font-size: 0.95rem;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-toggle-icon {
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  position: relative;
+  display: inline-block;
+}
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.nav-toggle-icon::before {
+  top: -5px;
+}
+
+.nav-toggle-icon::after {
+  top: 5px;
+}
+
+.nav-toggle.is-open .nav-toggle-icon {
+  background: transparent;
+}
+
+.nav-toggle.is-open .nav-toggle-icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.nav-toggle.is-open .nav-toggle-icon::after {
+  top: 0;
+  transform: rotate(-45deg);
 }
 
 .nav a {
@@ -421,6 +488,18 @@ input:focus {
   color: var(--muted);
   font-size: 0.9rem;
   text-align: center;
+  display: grid;
+  gap: 6px;
+}
+
+.footer-credit p {
+  margin: 0;
+}
+
+.footer-credit a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .disclosure {
@@ -514,28 +593,42 @@ input:focus {
   white-space: nowrap;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 12px;
   }
 
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
   .nav {
-    display: flex;
+    display: none;
     width: 100%;
-    gap: 10px;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    padding-bottom: 4px;
+    gap: 8px;
+    padding: 6px 0 2px;
+    flex-direction: column;
+    order: 3;
+  }
+
+  .nav.is-open {
+    display: grid;
   }
 
   .nav a {
-    flex: 0 0 auto;
-    padding: 10px 12px;
+    width: 100%;
+    padding: 11px 12px;
     font-size: 0.9rem;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.75);
+    justify-content: flex-start;
   }
+}
 
+@media (max-width: 900px) {
   .hero {
     padding-top: 60px;
   }
@@ -572,15 +665,6 @@ input:focus {
 
   .header-inner {
     gap: 8px;
-  }
-
-  .nav {
-    gap: 8px;
-  }
-
-  .nav a {
-    padding: 9px 11px;
-    font-size: 0.86rem;
   }
 
   .card-grid {
