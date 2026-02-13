@@ -70,9 +70,11 @@ Affiliate link clicks are tracked via `js/affiliate-tracker.js`. Optional persis
 │   └── review-page.css
 ├── js/
 │   ├── affiliate-config.js
+│   ├── aurora-showcase.js
 │   ├── affiliate-tracker.js
 │   ├── auth-config.js
 │   ├── auth.js
+│   ├── nav.js
 │   ├── price-comparison.js
 │   └── supabase-data.js
 ├── auth.html
@@ -84,7 +86,9 @@ Affiliate link clicks are tracked via `js/affiliate-tracker.js`. Optional persis
 │   └── schema.sql
 ├── images/
 │   └── products/
-│       ├── aurora-silk-gown.svg
+│       ├── Aurora/
+│       │   ├── red/
+│       │   └── blue/
 │       ├── sable-dress.svg
 │       ├── velour-handbag.svg
 │       └── ivory-handbag.svg

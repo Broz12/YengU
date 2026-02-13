@@ -277,6 +277,46 @@ input:focus {
   border: 1px solid var(--line);
 }
 
+.aurora-showcase {
+  display: grid;
+  gap: 10px;
+}
+
+.aurora-showcase img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: opacity 0.28s var(--ease), transform 0.28s var(--ease);
+}
+
+.aurora-showcase img.is-swapping {
+  opacity: 0.42;
+  transform: scale(0.985);
+}
+
+.aurora-switch {
+  display: flex;
+  gap: 8px;
+}
+
+.aurora-chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.aurora-chip.is-active {
+  color: #fff;
+  border-color: transparent;
+  background: var(--emerald);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
