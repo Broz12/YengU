@@ -32,8 +32,18 @@
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="category/dresses.html">Dresses</a>
-        <a href="category/handbags.html">Handbags</a>
+        <div class="nav-categories" data-nav-categories>
+          <button type="button" class="nav-category-toggle" aria-expanded="false">
+            Category
+            <span class="nav-caret" aria-hidden="true"></span>
+          </button>
+          <div class="nav-category-menu">
+            <a href="category/dresses.html">Dresses</a>
+            <a href="category/handbags.html">Handbags</a>
+            <a href="reviews/product-1.html">Aurora Red</a>
+            <a href="reviews/product-1.html#aurora-blue">Aurora Blue</a>
+          </div>
+        </div>
         <a href="guides/luxury-fashion-buying-guide.html">Guides</a>
         <a href="about.html">About</a>
         <a href="disclosure.html">Disclosure</a>
@@ -62,10 +72,10 @@
         </div>
         <div class="hero-card">
           <div class="aurora-showcase" data-aurora-showcase>
-            <img src="images/products/Aurora/red/red2.jpg" alt="Aurora Silkworm Red" data-aurora-image />
+            <img src="images/products/Aurora/red/red1.jpg" alt="Aurora Silkworm Red" data-aurora-image />
             <div class="aurora-switch" role="group" aria-label="Aurora color options">
-              <button type="button" class="aurora-chip is-active" data-aurora-color="red" aria-pressed="true">Red</button>
-              <button type="button" class="aurora-chip" data-aurora-color="blue" aria-pressed="false">Blue</button>
+              <button type="button" class="aurora-chip is-active" data-aurora-color="red" data-aurora-src="images/products/Aurora/red/red1.jpg" data-aurora-alt="Aurora Silkworm Red" data-aurora-href="https://amzn.in/d/03r1WIcE" data-aurora-product="yg-aurora-red" data-aurora-price-label="₹1,299 on Amazon" data-aurora-cta-text="Buy Red on Amazon" aria-pressed="true">Red</button>
+              <button type="button" class="aurora-chip" data-aurora-color="blue" data-aurora-src="images/products/Aurora/blue/blue3.jpg" data-aurora-alt="Aurora Silkworm Blue" data-aurora-href="https://amzn.in/d/08Q9xMwW" data-aurora-product="yg-aurora-blue" data-aurora-price-label="₹1,699 on Amazon" data-aurora-cta-text="Buy Blue on Amazon" aria-pressed="false">Blue</button>
             </div>
           </div>
           <div>
@@ -95,6 +105,16 @@
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
               <a class="button secondary" href="reviews/product-1.html">Read Review</a>
               <a class="button ref-link" href="https://amzn.in/d/03r1WIcE" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-red">Buy Red → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
+            </div>
+          </article>
+          <article class="card stagger">
+            <img src="images/products/Aurora/blue/blue3.jpg" alt="Aurora Silkworm Blue" loading="lazy" />
+            <h3>Aurora Silkworm (Blue)</h3>
+            <p class="meta">Royal blue edition with embellished detailing.</p>
+            <p class="rating"><span>★★★★☆</span> 8.7/10</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a class="button secondary" href="reviews/product-1.html#aurora-blue">See Blue</a>
+              <a class="button ref-link" href="https://amzn.in/d/08Q9xMwW" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-blue">Buy Blue → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
             </div>
           </article>
           <article class="card stagger">

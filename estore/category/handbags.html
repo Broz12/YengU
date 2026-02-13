@@ -30,8 +30,18 @@
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="../index.html">Home</a>
-        <a href="dresses.html">Dresses</a>
-        <a href="handbags.html">Handbags</a>
+        <div class="nav-categories" data-nav-categories>
+          <button type="button" class="nav-category-toggle" aria-expanded="false">
+            Category
+            <span class="nav-caret" aria-hidden="true"></span>
+          </button>
+          <div class="nav-category-menu">
+            <a href="../category/dresses.html">Dresses</a>
+            <a href="../category/handbags.html">Handbags</a>
+            <a href="../reviews/product-1.html">Aurora Red</a>
+            <a href="../reviews/product-1.html#aurora-blue">Aurora Blue</a>
+          </div>
+        </div>
         <a href="../guides/luxury-fashion-buying-guide.html">Guides</a>
         <a href="../about.html">About</a>
         <a href="../disclosure.html">Disclosure</a>
@@ -41,39 +51,49 @@
     </div>
   </header>
 
-  <main id="main" class="section">
-    <div class="container">
-      <h1 class="section-title">Luxury Handbags</h1>
-      <p class="section-subtitle">Statement bags, everyday essentials, and curated reviews with verified retailer options.</p>
+  <main id="main" class="section category-shell">
+    <div class="container category-layout">
+      <aside class="category-sidebar">
+        <h2 class="category-side-title">Category Menu</h2>
+        <a class="category-link" href="dresses.html">Luxury Dresses</a>
+        <a class="category-link is-active" href="handbags.html">Luxury Handbags</a>
+        <a class="category-link" href="../reviews/product-2.html">Velour Arc</a>
+        <a class="category-link" href="../reviews/product-1.html">Aurora Red</a>
+      </aside>
 
-      <div class="card-grid">
-        <article class="card">
-          <img src="../images/products/velour-handbag.svg" alt="Velour Arc Handbag" loading="lazy" />
-          <h3>Velour Arc Handbag</h3>
-          <p class="meta">Top-rated sculpted handbag.</p>
-          <p class="rating"><span>★★★★★</span> 9.1/10</p>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <a class="button secondary" href="../reviews/product-2.html">Read Review</a>
-            <a class="button ref-link" href="https://www.flipkart.com/" target="_blank" rel="nofollow sponsored noopener" data-platform="flipkart" data-product="yg-velour-arc">Buy → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
-          </div>
-        </article>
-        <article class="card">
-          <img src="../images/products/ivory-handbag.svg" alt="Ivory Grid Handbag" loading="lazy" />
-          <h3>Ivory Grid Handbag</h3>
-          <p class="meta">Textured finish with modern grid detailing.</p>
-          <p class="rating"><span>★★★★☆</span> 8.0/10</p>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <a class="button secondary" href="../guides/luxury-fashion-buying-guide.html">See Care Guide</a>
-            <a class="button ref-link" href="https://www.amazon.in/" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-ivory-grid">Buy → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
-          </div>
-        </article>
-      </div>
+      <section class="category-content">
+        <h1 class="section-title">Luxury Handbags</h1>
+        <p class="section-subtitle">Statement bags, everyday essentials, and curated reviews with verified retailer options.</p>
 
-      <section style="margin-top: 40px;">
-        <h2 class="section-title">Top Accessory Pairings</h2>
-        <div class="card">
-          <p>Pair your handbag with a refined gown or tailored suit for a cohesive luxury look. See our <a href="../reviews/product-1.html">Aurora Silk Gown</a> review for styling ideas.</p>
+        <div class="card-grid">
+          <article class="card">
+            <img src="../images/products/velour-handbag.svg" alt="Velour Arc Handbag" loading="lazy" />
+            <h3>Velour Arc Handbag</h3>
+            <p class="meta">Top-rated sculpted handbag.</p>
+            <p class="rating"><span>★★★★★</span> 9.1/10</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a class="button secondary" href="../reviews/product-2.html">Read Review</a>
+              <a class="button ref-link" href="https://www.flipkart.com/" target="_blank" rel="nofollow sponsored noopener" data-platform="flipkart" data-product="yg-velour-arc">Buy → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="../images/products/ivory-handbag.svg" alt="Ivory Grid Handbag" loading="lazy" />
+            <h3>Ivory Grid Handbag</h3>
+            <p class="meta">Textured finish with modern grid detailing.</p>
+            <p class="rating"><span>★★★★☆</span> 8.0/10</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a class="button secondary" href="../guides/luxury-fashion-buying-guide.html">See Care Guide</a>
+              <a class="button ref-link" href="https://www.amazon.in/" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-ivory-grid">Buy → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
+            </div>
+          </article>
         </div>
+
+        <section style="margin-top: 40px;">
+          <h2 class="section-title">Top Accessory Pairings</h2>
+          <div class="card">
+            <p>Pair your handbag with a refined gown or tailored suit for a cohesive luxury look. See our <a href="../reviews/product-1.html">Aurora Silkworm</a> review for styling ideas.</p>
+          </div>
+        </section>
       </section>
     </div>
   </main>

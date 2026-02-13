@@ -7,33 +7,26 @@
   var chips = Array.prototype.slice.call(showcase.querySelectorAll("[data-aurora-color]"));
   if (!image || !cta || !chips.length) return;
 
-  var variants = {
-    red: {
-      src: "images/products/Aurora/red/red2.jpg",
-      alt: "Aurora Silkworm Red",
-      href: "https://amzn.in/d/03r1WIcE",
-      productId: "yg-aurora-red",
-      priceLabel: "₹1,299 on Amazon",
-      buttonLabel: "Buy Red on Amazon",
-    },
-    blue: {
-      src: "images/products/Aurora/blue/blue2.jpg",
-      alt: "Aurora Silkworm Blue",
-      href: "https://amzn.in/d/08Q9xMwW",
-      productId: "yg-aurora-blue",
-      priceLabel: "₹1,699 on Amazon",
-      buttonLabel: "Buy Blue on Amazon",
-    },
-  };
+  function getVariant(chip) {
+    return {
+      color: chip.getAttribute("data-aurora-color") || "",
+      src: chip.getAttribute("data-aurora-src") || "",
+      alt: chip.getAttribute("data-aurora-alt") || "",
+      href: chip.getAttribute("data-aurora-href") || "",
+      productId: chip.getAttribute("data-aurora-product") || "",
+      priceLabel: chip.getAttribute("data-aurora-price-label") || "Best price",
+      buttonLabel: chip.getAttribute("data-aurora-cta-text") || "Buy on Amazon",
+    };
+  }
 
-  var active = "red";
+  var active = chips[0].getAttribute("data-aurora-color") || "red";
   var intervalId = null;
 
-  function applyVariant(nextColor) {
-    var next = variants[nextColor];
-    if (!next) return;
+  function applyVariantFromChip(chip) {
+    var next = getVariant(chip);
+    if (!next.color || !next.src || !next.href || !next.productId) return;
 
-    active = nextColor;
+    active = next.color;
 
     image.classList.add("is-swapping");
     window.setTimeout(function () {
@@ -49,10 +42,21 @@
     if (ctaText) ctaText.textContent = next.buttonLabel;
 
     chips.forEach(function (chip) {
-      var isActive = chip.getAttribute("data-aurora-color") === nextColor;
+      var isActive = chip.getAttribute("data-aurora-color") === next.color;
       chip.classList.toggle("is-active", isActive);
       chip.setAttribute("aria-pressed", isActive ? "true" : "false");
     });
+  }
+
+  function applyVariant(nextColor) {
+    var target = null;
+    chips.forEach(function (chip) {
+      if (chip.getAttribute("data-aurora-color") === nextColor) {
+        target = chip;
+      }
+    });
+    if (!target) return;
+    applyVariantFromChip(target);
   }
 
   function startRotation() {
@@ -64,7 +68,7 @@
 
   chips.forEach(function (chip) {
     chip.addEventListener("click", function () {
-      applyVariant(chip.getAttribute("data-aurora-color"));
+      applyVariantFromChip(chip);
       startRotation();
     });
   });
