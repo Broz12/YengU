@@ -56,6 +56,21 @@
     return window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/") + "account.html";
   }
 
+  function buildReferenceId(userId) {
+    if (!userId) return "YU-000000000";
+
+    // FNV-1a style 32-bit hash for deterministic, non-sensitive reference IDs.
+    var hash = 2166136261;
+    for (var i = 0; i < userId.length; i += 1) {
+      hash ^= userId.charCodeAt(i);
+      hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+      hash >>>= 0;
+    }
+
+    var numericRef = String(hash % 1000000000).padStart(9, "0");
+    return "YU-" + numericRef;
+  }
+
   function bindAuthPage(client) {
     var tabs = document.querySelectorAll(".auth-tab");
     var forms = document.querySelectorAll(".auth-form");
@@ -154,7 +169,8 @@
   async function bindAccountPage(client) {
     var status = document.getElementById("account-status");
     var emailTarget = document.getElementById("account-email");
-    var idTarget = document.getElementById("account-user-id");
+    var refTarget = document.getElementById("account-reference-id");
+    var copyRefButton = document.getElementById("copy-reference-btn");
     var logoutButton = document.getElementById("logout-btn");
 
     var sessionResult = await client.auth.getSession();
@@ -169,11 +185,23 @@
       emailTarget.textContent = session.user.email || "No email";
     }
 
-    if (idTarget) {
-      idTarget.textContent = session.user.id || "Unknown";
+    var referenceId = buildReferenceId(session.user.id || "");
+    if (refTarget) {
+      refTarget.textContent = referenceId;
     }
 
     setStatus(status, "success", "Authenticated");
+
+    if (copyRefButton) {
+      copyRefButton.addEventListener("click", async function () {
+        try {
+          await navigator.clipboard.writeText(referenceId);
+          setStatus(status, "success", "Reference ID copied.");
+        } catch (error) {
+          setStatus(status, "error", "Could not copy reference ID. Copy it manually.");
+        }
+      });
+    }
 
     if (logoutButton) {
       logoutButton.addEventListener("click", async function () {
