@@ -49,7 +49,7 @@
   }
 
   function applyAffiliateUrls() {
-    var links = document.querySelectorAll(".affiliate-link");
+    var links = document.querySelectorAll("a[data-platform][data-product]");
 
     links.forEach(function (link) {
       var platform = link.getAttribute("data-platform") || "";
@@ -92,7 +92,7 @@
   applyAffiliateUrls();
 
   document.addEventListener("click", function (event) {
-    var link = event.target.closest(".affiliate-link");
+    var link = event.target.closest("a[data-platform][data-product]");
     if (!link) return;
 
     var platform = link.getAttribute("data-platform") || "unknown";
