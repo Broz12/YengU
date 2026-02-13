@@ -134,15 +134,15 @@ input:focus {
 }
 
 .brand-mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background-color: #fff;
-  background-image: url("../images/logo/logo-128.png");
+  width: 46px;
+  height: 26px;
+  border-radius: 0;
+  border: 0;
+  background-color: transparent;
+  background-image: url("../images/logo/logo-mark.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 120%;
+  background-size: contain;
   display: inline-block;
   font-size: 0;
   color: transparent;
