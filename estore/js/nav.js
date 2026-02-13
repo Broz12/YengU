@@ -3,28 +3,6 @@
     button.setAttribute("aria-expanded", open ? "true" : "false");
     button.classList.toggle("is-open", open);
     nav.classList.toggle("is-open", open);
-    if (!open) {
-      nav.querySelectorAll(".nav-categories.is-open").forEach(function (group) {
-        group.classList.remove("is-open");
-        var toggle = group.querySelector(".nav-category-toggle");
-        if (toggle) toggle.setAttribute("aria-expanded", "false");
-      });
-    }
-  }
-
-  function wireCategoryMenus(nav) {
-    nav.querySelectorAll("[data-nav-categories]").forEach(function (group) {
-      var toggle = group.querySelector(".nav-category-toggle");
-      if (!toggle) return;
-
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.addEventListener("click", function (event) {
-        event.stopPropagation();
-        var isOpen = group.classList.contains("is-open");
-        group.classList.toggle("is-open", !isOpen);
-        toggle.setAttribute("aria-expanded", !isOpen ? "true" : "false");
-      });
-    });
   }
 
   function setupToggle(button) {
@@ -34,7 +12,6 @@
     var nav = document.getElementById(targetId);
     if (!nav) return;
 
-    wireCategoryMenus(nav);
     setMenuState(button, nav, false);
 
     button.addEventListener("click", function () {
@@ -51,12 +28,8 @@
     });
 
     document.addEventListener("click", function (event) {
-      if (!event.target.closest("[data-nav-categories]")) {
-        nav.querySelectorAll(".nav-categories.is-open").forEach(function (group) {
-          group.classList.remove("is-open");
-          var toggle = group.querySelector(".nav-category-toggle");
-          if (toggle) toggle.setAttribute("aria-expanded", "false");
-        });
+      if (!event.target.closest(".site-header")) {
+        setMenuState(button, nav, false);
       }
     });
 

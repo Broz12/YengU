@@ -65,8 +65,6 @@
 
   // Track affiliate clicks for analytics attribution.
   function trackClick(platform, productId) {
-    console.log("Click tracked:", platform, productId);
-
     if (typeof gtag !== "undefined") {
       gtag("event", "affiliate_click", {
         platform: platform,

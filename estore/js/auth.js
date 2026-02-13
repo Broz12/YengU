@@ -19,10 +19,7 @@
       window.location.pathname.indexOf("/guides/") !== -1 ||
       window.location.pathname.indexOf("/category/") !== -1;
 
-    if (isNested) {
-      return "../account.html";
-    }
-
+    if (isNested) return "../account.html";
     return "account.html";
   }
 
@@ -31,10 +28,7 @@
       window.location.pathname.indexOf("/guides/") !== -1 ||
       window.location.pathname.indexOf("/category/") !== -1;
 
-    if (isNested) {
-      return "../auth.html";
-    }
-
+    if (isNested) return "../auth.html";
     return "auth.html";
   }
 
@@ -42,9 +36,7 @@
     if (!node) return;
     node.textContent = message || "";
     node.className = "auth-status";
-    if (type) {
-      node.classList.add("is-" + type);
-    }
+    if (type) node.classList.add("is-" + type);
   }
 
   function getMessage(error, fallback) {
@@ -59,7 +51,6 @@
   function buildReferenceId(userId) {
     if (!userId) return "YU-000000000";
 
-    // FNV-1a style 32-bit hash for deterministic, non-sensitive reference IDs.
     var hash = 2166136261;
     for (var i = 0; i < userId.length; i += 1) {
       hash ^= userId.charCodeAt(i);
@@ -69,6 +60,81 @@
 
     var numericRef = String(hash % 1000000000).padStart(9, "0");
     return "YU-" + numericRef;
+  }
+
+  function formatDate(isoDate) {
+    if (!isoDate) return "Not available";
+    var parsed = new Date(isoDate);
+    if (Number.isNaN(parsed.getTime())) return "Not available";
+    return parsed.toLocaleString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
+  function prefKey(userId, key) {
+    return "yengu:pref:" + (userId || "guest") + ":" + key;
+  }
+
+  function getPref(userId, key, fallback) {
+    try {
+      var value = window.localStorage.getItem(prefKey(userId, key));
+      if (value === null) return fallback;
+      return value === "1";
+    } catch (error) {
+      return fallback;
+    }
+  }
+
+  function setPref(userId, key, value) {
+    try {
+      window.localStorage.setItem(prefKey(userId, key), value ? "1" : "0");
+    } catch (error) {
+      // Ignore storage errors on restricted devices.
+    }
+  }
+
+  function bindPreferenceToggle(userId, status, elementId, key, defaultValue, onUpdate) {
+    var input = document.getElementById(elementId);
+    if (!input) return;
+
+    input.checked = getPref(userId, key, defaultValue);
+    if (typeof onUpdate === "function") onUpdate(input.checked);
+
+    input.addEventListener("change", function () {
+      setPref(userId, key, input.checked);
+      if (typeof onUpdate === "function") onUpdate(input.checked);
+      setStatus(status, "success", "Account preferences saved.");
+    });
+  }
+
+  function renderLinkedProviders(user) {
+    var target = document.getElementById("linked-providers");
+    if (!target) return;
+
+    var providers = [];
+    if (user && user.app_metadata && Array.isArray(user.app_metadata.providers)) {
+      providers = user.app_metadata.providers.slice();
+    }
+
+    if ((!providers || !providers.length) && user && Array.isArray(user.identities)) {
+      providers = user.identities
+        .map(function (identity) { return identity && identity.provider ? identity.provider : ""; })
+        .filter(Boolean);
+    }
+
+    if (!providers.length) providers = ["email"];
+
+    target.innerHTML = "";
+    providers.forEach(function (provider) {
+      var item = document.createElement("li");
+      var normalized = provider === "email" ? "Email + Password" : provider.charAt(0).toUpperCase() + provider.slice(1);
+      item.textContent = normalized + " linked";
+      target.appendChild(item);
+    });
   }
 
   function bindAuthPage(client) {
@@ -170,6 +236,7 @@
     var status = document.getElementById("account-status");
     var emailTarget = document.getElementById("account-email");
     var refTarget = document.getElementById("account-reference-id");
+    var signInTarget = document.getElementById("account-last-signin");
     var copyRefButton = document.getElementById("copy-reference-btn");
     var logoutButton = document.getElementById("logout-btn");
 
@@ -181,13 +248,56 @@
       return;
     }
 
-    if (emailTarget) {
-      emailTarget.textContent = session.user.email || "No email";
-    }
+    if (emailTarget) emailTarget.textContent = session.user.email || "No email";
 
     var referenceId = buildReferenceId(session.user.id || "");
-    if (refTarget) {
-      refTarget.textContent = referenceId;
+    if (refTarget) refTarget.textContent = referenceId;
+
+    if (signInTarget) signInTarget.textContent = formatDate(session.user.last_sign_in_at);
+
+    renderLinkedProviders(session.user);
+
+    var userId = session.user.id || "guest";
+    bindPreferenceToggle(userId, status, "consent-analytics", "consent_analytics", true);
+    bindPreferenceToggle(userId, status, "consent-affiliate", "consent_affiliate", true);
+    bindPreferenceToggle(userId, status, "consent-email", "consent_email", false);
+    bindPreferenceToggle(userId, status, "setting-price-alerts", "price_alerts", true);
+    bindPreferenceToggle(userId, status, "setting-fast-nav", "fast_nav", true);
+    bindPreferenceToggle(userId, status, "setting-reduced-motion", "reduced_motion", false, function (enabled) {
+      document.documentElement.style.scrollBehavior = enabled ? "auto" : "smooth";
+    });
+
+    var passwordForm = document.getElementById("password-change-form");
+    if (passwordForm) {
+      passwordForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        var newPasswordNode = document.getElementById("password-new");
+        var confirmPasswordNode = document.getElementById("password-confirm");
+        var newPassword = newPasswordNode ? newPasswordNode.value.trim() : "";
+        var confirmPassword = confirmPasswordNode ? confirmPasswordNode.value.trim() : "";
+
+        if (newPassword.length < 8) {
+          setStatus(status, "error", "Password must be at least 8 characters.");
+          return;
+        }
+
+        if (newPassword !== confirmPassword) {
+          setStatus(status, "error", "Password confirmation does not match.");
+          return;
+        }
+
+        setStatus(status, "info", "Updating password...");
+
+        var updateResult = await client.auth.updateUser({ password: newPassword });
+        if (updateResult.error) {
+          setStatus(status, "error", getMessage(updateResult.error, "Unable to update password."));
+          return;
+        }
+
+        passwordForm.reset();
+        setStatus(status, "success", "Password updated successfully.");
+      });
     }
 
     setStatus(status, "success", "Authenticated");
@@ -207,7 +317,7 @@
       logoutButton.addEventListener("click", async function () {
         setStatus(status, "info", "Signing out...");
         await client.auth.signOut();
-        window.location.href = authPath();
+        window.location.href = authPath() + "?mode=login";
       });
     }
   }

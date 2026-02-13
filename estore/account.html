@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/logo/logo-mark.png" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/auth.css" />
 </head>
@@ -31,36 +32,26 @@
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <div class="nav-categories" data-nav-categories>
-          <button type="button" class="nav-category-toggle" aria-expanded="false">
-            Category
-            <span class="nav-caret" aria-hidden="true"></span>
-          </button>
-          <div class="nav-category-menu">
-            <a href="category/dresses.html">Dresses</a>
-            <a href="category/handbags.html">Handbags</a>
-            <a href="reviews/product-1.html">Aurora Red</a>
-            <a href="reviews/product-1.html#aurora-blue">Aurora Blue</a>
-          </div>
-        </div>
+        <a href="category/dresses.html">Dresses</a>
+        <a href="category/handbags.html">Handbags</a>
         <a href="guides/luxury-fashion-buying-guide.html">Guides</a>
         <a href="about.html">About</a>
         <a href="disclosure.html">Disclosure</a>
-        <a href="auth.html">Login</a>
         <a href="account.html">Account</a>
       </nav>
     </div>
   </header>
 
   <main id="main" class="auth-shell">
-    <div class="container" style="max-width: 760px;">
+    <div class="container account-container">
       <section class="account-panel">
         <h1 class="section-title" style="margin-bottom: 10px;">My Account</h1>
-        <p class="section-subtitle" style="margin-bottom: 8px;">Session and profile details for your member access.</p>
+        <p class="section-subtitle">Control your preferences, privacy choices, and account security in one place.</p>
 
         <div class="account-meta">
           <p><strong>Email:</strong> <span id="account-email">Loading...</span></p>
           <p><strong>Reference ID:</strong> <code id="account-reference-id">Loading...</code></p>
+          <p><strong>Last sign in:</strong> <span id="account-last-signin">Checking...</span></p>
         </div>
 
         <div class="auth-actions" style="margin-top: 18px;">
@@ -70,6 +61,65 @@
         </div>
 
         <div id="account-status" class="auth-status" aria-live="polite"></div>
+
+        <div class="account-tool-grid">
+          <article class="account-tool-card">
+            <h2>Privacy Policy</h2>
+            <p class="meta">Review how YengU handles click data, session tokens, and alert subscriptions.</p>
+            <a class="button secondary" href="disclosure.html">Open Privacy & Disclosure</a>
+          </article>
+
+          <article class="account-tool-card">
+            <h2>Consent Controls</h2>
+            <p class="meta">Choose what data usage you allow for site analytics and affiliate attribution.</p>
+            <div class="account-switch-list">
+              <label class="account-switch"><input id="consent-analytics" type="checkbox" /> Allow analytics tracking</label>
+              <label class="account-switch"><input id="consent-affiliate" type="checkbox" /> Allow affiliate click attribution</label>
+              <label class="account-switch"><input id="consent-email" type="checkbox" /> Allow promotional email updates</label>
+            </div>
+          </article>
+
+          <article class="account-tool-card">
+            <h2>Usage Settings</h2>
+            <p class="meta">Tune your experience for speed and accessibility.</p>
+            <div class="account-switch-list">
+              <label class="account-switch"><input id="setting-price-alerts" type="checkbox" /> Enable price-drop alerts</label>
+              <label class="account-switch"><input id="setting-reduced-motion" type="checkbox" /> Prefer reduced motion</label>
+              <label class="account-switch"><input id="setting-fast-nav" type="checkbox" /> Prioritize fast nav interactions</label>
+            </div>
+          </article>
+
+          <article class="account-tool-card">
+            <h2>Change Password</h2>
+            <p class="meta">Update account password from your current active session.</p>
+            <form id="password-change-form" class="auth-form" novalidate>
+              <label for="password-new">New password</label>
+              <input id="password-new" type="password" minlength="8" autocomplete="new-password" required />
+              <label for="password-confirm">Confirm new password</label>
+              <input id="password-confirm" type="password" minlength="8" autocomplete="new-password" required />
+              <button class="button secondary" type="submit">Update Password</button>
+            </form>
+          </article>
+
+          <article class="account-tool-card">
+            <h2>Linked Accounts</h2>
+            <p class="meta">Visibility of connected providers is shown for transparency.</p>
+            <ul id="linked-providers" class="account-provider-list"></ul>
+          </article>
+
+          <article class="account-tool-card">
+            <h2>Customer Support</h2>
+            <p class="meta">Need help with account, disclosures, or product links?</p>
+            <p><a href="mailto:yengudesign@gmail.com">yengudesign@gmail.com</a></p>
+            <a class="button secondary" href="mailto:yengudesign@gmail.com?subject=YengU%20Support%20Request">Email Support</a>
+          </article>
+        </div>
+
+        <div class="account-login-box">
+          <h2>Login Access</h2>
+          <p class="meta">If you need to sign in with a different account, use the login page below.</p>
+          <a class="button secondary" href="auth.html?mode=login">Open Login Page</a>
+        </div>
       </section>
     </div>
   </main>
@@ -105,13 +155,14 @@
     </div>
     <div class="container footer-credit">
       <p>© 2026 YengU. Developed by Brojendro Ningthoujam.</p>
-      <p>Copyrights, email: <a href="mailto:brojendroningthoujam804@gmail.com">brojendroningthoujam804@gmail.com</a> · Contact: <a href="tel:+919863355934">+91-9863355934</a>.</p>
+      <p>Customer support: <a href="mailto:yengudesign@gmail.com">yengudesign@gmail.com</a></p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/auth-config.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/nav.js"></script>
+  <script defer src="js/security.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/auth-config.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/nav.js"></script>
 </body>
 </html>

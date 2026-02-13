@@ -14,7 +14,7 @@
     var nextProduct = chip.getAttribute("data-aurora-review-product");
     var nextPrice = chip.getAttribute("data-aurora-review-price") || "Best price";
     var nextPriceLabel = chip.getAttribute("data-aurora-review-price-label") || nextPrice;
-    var nextColor = chip.getAttribute("data-aurora-review-color") || "Variant";
+    var nextLabel = chip.getAttribute("data-aurora-review-label") || chip.textContent.trim() || "Variant";
 
     if (nextImage) {
       mainImage.classList.add("is-swapping");
@@ -29,12 +29,12 @@
     if (nextProduct) primaryButton.setAttribute("data-product", nextProduct);
     primaryButton.setAttribute("data-price-label", nextPriceLabel);
     primaryButton.innerHTML =
-      "Buy " + nextColor.charAt(0).toUpperCase() + nextColor.slice(1) +
+      "Buy " + nextLabel +
       " on Amazon → <span class=\"affiliate-icon\" aria-hidden=\"true\">i</span><span class=\"sr-only\">Affiliate link</span>";
 
     priceNode.textContent = nextPrice;
     if (stickyLabel) {
-      stickyLabel.textContent = nextPrice + " on Amazon (" + nextColor.charAt(0).toUpperCase() + nextColor.slice(1) + ")";
+      stickyLabel.textContent = nextPrice + " on Amazon (" + nextLabel + ")";
     }
 
     chips.forEach(function (item) {

@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../images/logo/logo-mark.png" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
@@ -30,22 +31,11 @@
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="../index.html">Home</a>
-        <div class="nav-categories" data-nav-categories>
-          <button type="button" class="nav-category-toggle" aria-expanded="false">
-            Category
-            <span class="nav-caret" aria-hidden="true"></span>
-          </button>
-          <div class="nav-category-menu">
-            <a href="../category/dresses.html">Dresses</a>
-            <a href="../category/handbags.html">Handbags</a>
-            <a href="../reviews/product-1.html">Aurora Red</a>
-            <a href="../reviews/product-1.html#aurora-blue">Aurora Blue</a>
-          </div>
-        </div>
+        <a href="../category/dresses.html">Dresses</a>
+        <a href="../category/handbags.html">Handbags</a>
         <a href="../guides/luxury-fashion-buying-guide.html">Guides</a>
         <a href="../about.html">About</a>
         <a href="../disclosure.html">Disclosure</a>
-        <a href="../auth.html">Login</a>
         <a href="../account.html">Account</a>
       </nav>
     </div>
@@ -58,7 +48,7 @@
         <a class="category-link" href="dresses.html">Luxury Dresses</a>
         <a class="category-link is-active" href="handbags.html">Luxury Handbags</a>
         <a class="category-link" href="../reviews/product-2.html">Velour Arc</a>
-        <a class="category-link" href="../reviews/product-1.html">Aurora Red</a>
+        <a class="category-link" href="../reviews/product-1.html">Crush Silk Gown with Dupatta</a>
       </aside>
 
       <section class="category-content">
@@ -129,15 +119,16 @@
     </div>
     <div class="container footer-credit">
       <p>© 2026 YengU. Developed by Brojendro Ningthoujam.</p>
-      <p>Copyrights, email: <a href="mailto:brojendroningthoujam804@gmail.com">brojendroningthoujam804@gmail.com</a> · Contact: <a href="tel:+919863355934">+91-9863355934</a>.</p>
+      <p>Customer support: <a href="mailto:yengudesign@gmail.com">yengudesign@gmail.com</a></p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="../js/auth-config.js"></script>
-  <script src="../js/supabase-data.js"></script>
-  <script src="../js/affiliate-config.js"></script>
-  <script src="../js/affiliate-tracker.js"></script>
-  <script src="../js/nav.js"></script>
+  <script defer src="../js/security.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../js/auth-config.js"></script>
+  <script defer src="../js/supabase-data.js"></script>
+  <script defer src="../js/affiliate-config.js"></script>
+  <script defer src="../js/affiliate-tracker.js"></script>
+  <script defer src="../js/nav.js"></script>
 </body>
 </html>

@@ -2,6 +2,10 @@
   padding: 56px 0 72px;
 }
 
+.account-container {
+  max-width: 1120px;
+}
+
 .auth-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -114,6 +118,77 @@
   background: rgba(36, 66, 59, 0.08);
   padding: 4px 8px;
   border-radius: 8px;
+}
+
+.account-tool-grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.account-tool-card {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.76);
+  border-radius: 14px;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.account-tool-card h2 {
+  font-size: 1.15rem;
+  font-family: "Playfair Display", serif;
+}
+
+.account-switch-list {
+  display: grid;
+  gap: 8px;
+}
+
+.account-switch {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.92rem;
+}
+
+.account-switch input {
+  margin-top: 3px;
+  accent-color: var(--emerald);
+}
+
+.account-provider-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.account-provider-list li {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 8px 10px;
+  font-size: 0.92rem;
+}
+
+.account-login-box {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  background: rgba(36, 66, 59, 0.06);
+  display: grid;
+  gap: 10px;
+}
+
+.account-login-box h2 {
+  font-size: 1.1rem;
+  font-family: "Playfair Display", serif;
+}
+
+#password-change-form .button {
+  width: fit-content;
 }
 
 @media (max-width: 900px) {

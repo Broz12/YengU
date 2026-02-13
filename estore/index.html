@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/logo/logo-mark.png" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -32,22 +33,11 @@
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <div class="nav-categories" data-nav-categories>
-          <button type="button" class="nav-category-toggle" aria-expanded="false">
-            Category
-            <span class="nav-caret" aria-hidden="true"></span>
-          </button>
-          <div class="nav-category-menu">
-            <a href="category/dresses.html">Dresses</a>
-            <a href="category/handbags.html">Handbags</a>
-            <a href="reviews/product-1.html">Aurora Red</a>
-            <a href="reviews/product-1.html#aurora-blue">Aurora Blue</a>
-          </div>
-        </div>
+        <a href="category/dresses.html">Dresses</a>
+        <a href="category/handbags.html">Handbags</a>
         <a href="guides/luxury-fashion-buying-guide.html">Guides</a>
         <a href="about.html">About</a>
         <a href="disclosure.html">Disclosure</a>
-        <a href="auth.html">Login</a>
         <a href="account.html">Account</a>
       </nav>
     </div>
@@ -58,36 +48,39 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <span class="badge">Curated Luxury Picks</span>
-          <h1>Discover luxury fashion you can trust, with honest reviews and the best places to buy.</h1>
-          <p>YengU is a product discovery platform focused on premium fashion. We research, test, and compare trending pieces so you can shop confidently on trusted retailers like Amazon, Flipkart, and Myntra.</p>
+          <h1>Find luxury fashion faster with clear, honest reviews.</h1>
+          <p>Compare quality, price, and styling fit in minutes. We keep every recommendation transparent and optimized for real-world shopping.</p>
           <div class="tag-list">
             <span class="tag">No Sponsored Rankings</span>
-            <span class="tag">Updated Weekly</span>
+            <span class="tag">Mobile-First Layout</span>
             <span class="tag">Affiliate Transparency</span>
           </div>
-          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
-            <a class="button" href="reviews/product-1.html">Read Latest Review</a>
+          <div class="button-row hero-actions">
+            <a class="button" href="reviews/product-1.html#aurora-blue">Read Latest Review</a>
             <a class="button secondary" href="guides/luxury-fashion-buying-guide.html">Browse Buying Guide</a>
           </div>
+          <article class="hero-inline-story">
+            <img src="images/products/Aurora/blue/blue1.jpg" alt="Shimmer Silk Gown with Dupatta Long Dress feature look" loading="lazy" />
+            <div>
+              <strong>Editor Focus: Shimmer Silk</strong>
+              <p>A clean blue silhouette with balanced shine and soft movement for evening events.</p>
+            </div>
+          </article>
         </div>
         <div class="hero-card">
-          <div class="aurora-showcase" data-aurora-showcase>
-            <img src="images/products/Aurora/red/red1.jpg" alt="Aurora Silkworm Red" data-aurora-image />
-            <div class="aurora-switch" role="group" aria-label="Aurora color options">
-              <button type="button" class="aurora-chip is-active" data-aurora-color="red" data-aurora-src="images/products/Aurora/red/red1.jpg" data-aurora-alt="Aurora Silkworm Red" data-aurora-href="https://amzn.in/d/03r1WIcE" data-aurora-product="yg-aurora-red" data-aurora-price-label="₹1,299 on Amazon" data-aurora-cta-text="Buy Red on Amazon" aria-pressed="true">Red</button>
-              <button type="button" class="aurora-chip" data-aurora-color="blue" data-aurora-src="images/products/Aurora/blue/blue3.jpg" data-aurora-alt="Aurora Silkworm Blue" data-aurora-href="https://amzn.in/d/08Q9xMwW" data-aurora-product="yg-aurora-blue" data-aurora-price-label="₹1,699 on Amazon" data-aurora-cta-text="Buy Blue on Amazon" aria-pressed="false">Blue</button>
-            </div>
+          <div class="aurora-showcase">
+            <img src="images/products/Aurora/blue/blue3.jpg" alt="Shimmer Silk Gown with Dupatta Long Dress" />
           </div>
           <div>
             <p class="rating"><span>★★★★★</span> 8.8/10 Overall</p>
-            <p class="meta">Aurora Silkworm · Red and blue editions on Amazon</p>
+            <p class="meta">Aurora Silkworm · Shimmer Silk Gown with Dupatta Long Dress</p>
           </div>
-          <a class="button ref-link" data-aurora-cta href="https://amzn.in/d/03r1WIcE" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-red" data-price-label="₹1,299 on Amazon">
-            <span data-aurora-cta-label>Buy Red on Amazon</span> →
+          <a class="button ref-link" href="https://amzn.in/d/08Q9xMwW" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-blue" data-price-label="₹1,699 on Amazon">
+            Buy Shimmer Silk Gown →
             <span class="affiliate-icon" aria-hidden="true">i</span>
             <span class="sr-only">Affiliate link</span>
           </a>
-          <div class="disclosure">We earn from qualifying purchases. Prices may vary. Last checked: February 12, 2026.</div>
+          <div class="disclosure">We earn from qualifying purchases. Prices may vary. Last checked: February 13, 2026.</div>
         </div>
       </div>
     </section>
@@ -95,26 +88,26 @@
     <section class="section">
       <div class="container">
         <h2 class="section-title">Trending Now</h2>
-        <p class="section-subtitle">Freshly reviewed luxury pieces with in-depth styling tips and multi-store price checks.</p>
+        <p class="section-subtitle">Freshly reviewed pieces with styling notes, retailer checks, and quick purchase options.</p>
         <div class="card-grid">
           <article class="card stagger">
-            <img src="images/products/Aurora/red/red1.jpg" alt="Aurora Silkworm Red" loading="lazy" />
-            <h3>Aurora Silkworm (Red)</h3>
-            <p class="meta">Flowing red floral edition with evening-ready drape.</p>
-            <p class="rating"><span>★★★★☆</span> 8.5/10</p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a class="button secondary" href="reviews/product-1.html">Read Review</a>
-              <a class="button ref-link" href="https://amzn.in/d/03r1WIcE" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-red">Buy Red → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
+            <img src="images/products/Aurora/blue/blue3.jpg" alt="Shimmer Silk Gown with Dupatta Long Dress" loading="lazy" />
+            <h3>Shimmer Silk Gown with Dupatta Long Dress</h3>
+            <p class="meta">Shimmer Silk variant with rich drape and event-ready detailing.</p>
+            <p class="rating"><span>★★★★☆</span> 8.7/10</p>
+            <div class="button-row">
+              <a class="button secondary" href="reviews/product-1.html#aurora-blue">See Details</a>
+              <a class="button ref-link" href="https://amzn.in/d/08Q9xMwW" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-blue">Buy Shimmer Silk → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
             </div>
           </article>
           <article class="card stagger">
-            <img src="images/products/Aurora/blue/blue3.jpg" alt="Aurora Silkworm Blue" loading="lazy" />
-            <h3>Aurora Silkworm (Blue)</h3>
-            <p class="meta">Royal blue edition with embellished detailing.</p>
-            <p class="rating"><span>★★★★☆</span> 8.7/10</p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a class="button secondary" href="reviews/product-1.html#aurora-blue">See Blue</a>
-              <a class="button ref-link" href="https://amzn.in/d/08Q9xMwW" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-blue">Buy Blue → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
+            <img src="images/products/Aurora/red/red2.jpg" alt="Crush Silk Gown with Dupatta" loading="lazy" />
+            <h3>Crush Silk Gown with Dupatta</h3>
+            <p class="meta">Crush Silk variant with flowing silhouette and soft evening finish.</p>
+            <p class="rating"><span>★★★★☆</span> 8.5/10</p>
+            <div class="button-row">
+              <a class="button secondary" href="reviews/product-1.html">Read Review</a>
+              <a class="button ref-link" href="https://amzn.in/d/03r1WIcE" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-red">Buy Crush Silk → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
             </div>
           </article>
           <article class="card stagger">
@@ -122,7 +115,7 @@
             <h3>Velour Arc Handbag</h3>
             <p class="meta">Architectural silhouette with soft suede finish.</p>
             <p class="rating"><span>★★★★★</span> 9.1/10</p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <div class="button-row">
               <a class="button secondary" href="reviews/product-2.html">Read Review</a>
               <a class="button ref-link" href="https://www.flipkart.com/" target="_blank" rel="nofollow sponsored noopener" data-platform="flipkart" data-product="yg-velour-arc">Buy → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
             </div>
@@ -132,7 +125,7 @@
             <h3>Sable Noir Dress</h3>
             <p class="meta">Minimalist satin slip with couture seams.</p>
             <p class="rating"><span>★★★★☆</span> 8.1/10</p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <div class="button-row">
               <a class="button secondary" href="category/dresses.html">View Category</a>
               <a class="button ref-link" href="https://www.myntra.com/" target="_blank" rel="nofollow sponsored noopener" data-platform="myntra" data-product="yg-sable-noir">Buy → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a>
             </div>
@@ -143,9 +136,54 @@
 
     <section class="section">
       <div class="container">
+        <h2 class="section-title">Aurora Style Journal</h2>
+        <p class="section-subtitle">Every frame tells a different styling story so you can pick the look that fits your event and mood.</p>
+        <div class="journal-grid">
+          <article class="journal-card">
+            <figure class="journal-media">
+              <img src="images/products/Aurora/blue/blue1.jpg" alt="Shimmer Silk Gown with Dupatta Long Dress full look" loading="lazy" />
+            </figure>
+            <div class="journal-body">
+              <h3>Look 01: Entrance Glow</h3>
+              <p class="meta">This shot highlights the long fall and shine of the blue variant under evening light.</p>
+            </div>
+          </article>
+          <article class="journal-card">
+            <figure class="journal-media">
+              <img src="images/products/Aurora/blue/blue2.jpg" alt="Shimmer Silk Gown with Dupatta Long Dress close detail" loading="lazy" />
+            </figure>
+            <div class="journal-body">
+              <h3>Look 02: Detail Focus</h3>
+              <p class="meta">A close look at texture and border work for shoppers who prioritize finish quality.</p>
+            </div>
+          </article>
+          <article class="journal-card">
+            <figure class="journal-media">
+              <img src="images/products/Aurora/red/red2.jpg" alt="Crush Silk Gown with Dupatta front style" loading="lazy" />
+            </figure>
+            <div class="journal-body">
+              <h3>Look 03: Warm Ceremony Tone</h3>
+              <p class="meta">The red variant gives a richer festive mood with soft movement around the hemline.</p>
+            </div>
+          </article>
+          <article class="journal-card">
+            <figure class="journal-media">
+              <img src="images/products/Aurora/red/red3.jpg" alt="Crush Silk Gown with Dupatta fabric closeup" loading="lazy" />
+            </figure>
+            <div class="journal-body">
+              <h3>Look 04: Fabric Character</h3>
+              <p class="meta">Closeup coverage shows how the drape reacts in motion and where the finish stands out.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
         <h2 class="section-title">Compare Up to 3 Products</h2>
-        <p class="section-subtitle">Quickly see ratings, pricing, and retailer options to pick your best deal.</p>
-        <div style="overflow-x: auto;">
+        <p class="section-subtitle">See ratings, pricing, and retailer options in one responsive table.</p>
+        <div class="table-scroll">
           <table class="compare-table">
             <thead>
               <tr>
@@ -158,11 +196,18 @@
             </thead>
             <tbody>
               <tr>
-                <td>Aurora Silkworm (Red)</td>
+                <td>Shimmer Silk Gown with Dupatta Long Dress</td>
+                <td>8.7/10</td>
+                <td>₹1,699 (Amazon)</td>
+                <td>Premium blue drape with embellished detail</td>
+                <td><a class="button ref-link" href="https://amzn.in/d/08Q9xMwW" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-blue">Buy Shimmer Silk → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a></td>
+              </tr>
+              <tr>
+                <td>Crush Silk Gown with Dupatta</td>
                 <td>8.5/10</td>
                 <td>₹1,299 (Amazon)</td>
-                <td>Soft drape, timeless cut</td>
-                <td><a class="button ref-link" href="https://amzn.in/d/03r1WIcE" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-red">Buy Red → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a></td>
+                <td>Soft red silhouette with timeless finish</td>
+                <td><a class="button ref-link" href="https://amzn.in/d/03r1WIcE" target="_blank" rel="nofollow sponsored noopener" data-platform="amazon" data-product="yg-aurora-red">Buy Crush Silk → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a></td>
               </tr>
               <tr>
                 <td>Velour Arc Handbag</td>
@@ -170,13 +215,6 @@
                 <td>₹1,590 (Flipkart)</td>
                 <td>Structured, premium suede</td>
                 <td><a class="button ref-link" href="https://www.flipkart.com/" target="_blank" rel="nofollow sponsored noopener" data-platform="flipkart" data-product="yg-velour-arc">Buy → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a></td>
-              </tr>
-              <tr>
-                <td>Sable Noir Dress</td>
-                <td>8.1/10</td>
-                <td>₹1,999 (Myntra)</td>
-                <td>Minimal, night-ready</td>
-                <td><a class="button ref-link" href="https://www.myntra.com/" target="_blank" rel="nofollow sponsored noopener" data-platform="myntra" data-product="yg-sable-noir">Buy → <span class="affiliate-icon" aria-hidden="true">i</span><span class="sr-only">Affiliate link</span></a></td>
               </tr>
             </tbody>
           </table>
@@ -187,21 +225,21 @@
     <section class="section">
       <div class="container">
         <h2 class="section-title">Content Hubs</h2>
-        <p class="section-subtitle">Guides, trends, and style advice that link directly to the best-reviewed pieces.</p>
+        <p class="section-subtitle">Guides, trend reports, and size references linked to reviewed products.</p>
         <div class="card-grid">
           <article class="card">
             <h3>Ultimate Guide to Buying Luxury Dresses Online</h3>
-            <p class="meta">Learn how to verify quality, fit, and authenticity before you buy.</p>
+            <p class="meta">Learn how to verify quality, fit, and authenticity before checkout.</p>
             <a class="button secondary" href="guides/luxury-fashion-buying-guide.html">Read Guide</a>
           </article>
           <article class="card">
             <h3>Wedding Season Luxury Fashion Trends 2026</h3>
-            <p class="meta">Our editorial take on fabrics, silhouettes, and colors dominating this season.</p>
+            <p class="meta">Editorial picks on fabrics, silhouettes, and colors dominating this season.</p>
             <a class="button secondary" href="guides/luxury-fashion-buying-guide.html#trend-report">View Trends</a>
           </article>
           <article class="card">
             <h3>International Size Conversion Chart</h3>
-            <p class="meta">Find your perfect fit across global luxury brands.</p>
+            <p class="meta">Find your fit across global luxury brands in one quick table.</p>
             <a class="button secondary" href="guides/luxury-fashion-buying-guide.html#size-guide">Open Size Guide</a>
           </article>
         </div>
@@ -236,13 +274,13 @@
       <div class="container">
         <div class="email-capture">
           <h2>Get price-drop alerts</h2>
-          <p>We will notify you when your favorite luxury items go on sale or get restocked.</p>
+          <p>We notify you when your saved luxury picks go on sale or return in stock.</p>
           <form data-lead-form data-signup-type="price_drop" data-product-id="all-products">
             <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
             <button type="submit">Notify Me</button>
           </form>
           <p class="form-status" data-form-status aria-live="polite"></p>
-          <small>We will never share your email. Opt out anytime.</small>
+          <small>We never share your email. Opt out anytime.</small>
         </div>
       </div>
     </section>
@@ -279,16 +317,16 @@
     </div>
     <div class="container footer-credit">
       <p>© 2026 YengU. Developed by Brojendro Ningthoujam.</p>
-      <p>Copyrights, email: <a href="mailto:brojendroningthoujam804@gmail.com">brojendroningthoujam804@gmail.com</a> · Contact: <a href="tel:+919863355934">+91-9863355934</a>.</p>
+      <p>Customer support: <a href="mailto:yengudesign@gmail.com">yengudesign@gmail.com</a></p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/auth-config.js"></script>
-  <script src="js/supabase-data.js"></script>
-  <script src="js/affiliate-config.js"></script>
-  <script src="js/aurora-showcase.js"></script>
-  <script src="js/affiliate-tracker.js"></script>
-  <script src="js/nav.js"></script>
+  <script defer src="js/security.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/auth-config.js"></script>
+  <script defer src="js/supabase-data.js"></script>
+  <script defer src="js/affiliate-config.js"></script>
+  <script defer src="js/affiliate-tracker.js"></script>
+  <script defer src="js/nav.js"></script>
 </body>
 </html>
