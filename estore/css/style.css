@@ -155,6 +155,9 @@ input:focus {
   padding: 8px 10px;
   border-radius: 8px;
   color: var(--muted);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: all 0.2s var(--ease);
 }
 
@@ -503,8 +506,25 @@ input:focus {
 }
 
 @media (max-width: 900px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
   .nav {
-    display: none;
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    padding-bottom: 4px;
+  }
+
+  .nav a {
+    flex: 0 0 auto;
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
 
   .hero {
@@ -518,17 +538,33 @@ input:focus {
   .mobile-sticky {
     display: flex;
   }
+
+  .floating-disclosure {
+    right: 12px;
+    bottom: 74px;
+  }
 }
 
 @media (max-width: 600px) {
+  .container {
+    width: min(100% - 24px, var(--max));
+  }
+
   .hero-copy h1 {
     font-size: 2.3rem;
   }
 
   .header-inner {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .nav a {
+    padding: 9px 11px;
+    font-size: 0.86rem;
   }
 
   .card-grid {
