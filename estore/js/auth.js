@@ -90,7 +90,6 @@
 
     var signInForm = document.getElementById("sign-in-form");
     var signUpForm = document.getElementById("sign-up-form");
-    var resendButton = document.getElementById("resend-confirmation-btn");
 
     if (signInForm) {
       signInForm.addEventListener("submit", async function (event) {
@@ -108,7 +107,7 @@
         if (result.error) {
           var message = getMessage(result.error, "Login failed.");
           if (/email.*confirm/i.test(message)) {
-            message = "Email not confirmed. Use \"Resend Verification Email\" and check spam/promotions.";
+            message = "Email confirmation is still enabled in Supabase. Disable it in Auth settings for instant signup/login.";
           }
           setStatus(status, "error", message);
           return;
@@ -140,41 +139,14 @@
           return;
         }
 
-        setStatus(status, "success", "Signup successful. Check your email to verify your account if confirmation is enabled.");
-      });
-    }
-
-    if (resendButton) {
-      resendButton.addEventListener("click", async function () {
-        var email = "";
-        if (signInForm && signInForm.email && signInForm.email.value) {
-          email = signInForm.email.value.trim();
-        }
-        if (!email && signUpForm && signUpForm.email && signUpForm.email.value) {
-          email = signUpForm.email.value.trim();
-        }
-
-        if (!email) {
-          setStatus(status, "error", "Enter your email first, then click resend.");
+        var session = result && result.data ? result.data.session : null;
+        if (session && session.user) {
+          setStatus(status, "success", "Signup successful. Redirecting...");
+          window.location.href = accountPath();
           return;
         }
 
-        setStatus(status, "info", "Sending verification email...");
-
-        var resendResult = await client.auth.resend({
-          type: "signup",
-          email: email,
-          options: {
-            emailRedirectTo: getEmailRedirectUrl(),
-          },
-        });
-
-        if (resendResult.error) {
-          setStatus(status, "error", getMessage(resendResult.error, "Could not resend verification email."));
-          return;
-        }
-
-        setStatus(status, "success", "Verification email sent. Check inbox, spam, and promotions tabs.");
+        setStatus(status, "error", "Signup created but no active session returned. Disable email confirmation in Supabase Auth to allow immediate login.");
       });
     }
   }
@@ -232,7 +204,7 @@
       bindAuthPage(client);
       var existing = await client.auth.getSession();
       if (existing && existing.data && existing.data.session) {
-        setStatus(status, "info", "You are already signed in.");
+        window.location.href = accountPath();
       }
       return;
     }
