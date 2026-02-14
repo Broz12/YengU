@@ -9,7 +9,7 @@
 
   function applyChip(chip) {
     var nextImage = chip.getAttribute("data-aurora-review-image");
-    var nextAlt = chip.getAttribute("data-aurora-review-alt") || "Aurora Silkworm";
+    var nextAlt = chip.getAttribute("data-aurora-review-alt") || "Aurora Silk Gown";
     var nextHref = chip.getAttribute("data-aurora-review-href");
     var nextProduct = chip.getAttribute("data-aurora-review-product");
     var nextPrice = chip.getAttribute("data-aurora-review-price") || "Best price";

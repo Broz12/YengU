@@ -244,7 +244,13 @@ input:focus {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 40px;
-  align-items: center;
+  align-items: stretch;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .hero-copy h1 {
@@ -266,8 +272,12 @@ input:focus {
   padding: 26px;
   box-shadow: var(--shadow);
   border: 1px solid var(--line);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+  height: 100%;
+  position: relative;
+  isolation: isolate;
 }
 
 .hero-card img {
@@ -285,6 +295,7 @@ input:focus {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: center 5%;
   transition: opacity 0.28s var(--ease), transform 0.28s var(--ease);
 }
 
@@ -338,19 +349,38 @@ input:focus {
 }
 
 .hero-inline-story {
-  margin-top: 22px;
+  margin-top: auto;
+  padding-top: 22px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.72);
   box-shadow: 0 12px 28px rgba(28, 26, 23, 0.08);
   overflow: hidden;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-inline-media {
+  margin: 0;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-inline-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.2) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.03) 100%);
+  pointer-events: none;
 }
 
 .hero-inline-story img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 6 / 5;
   object-fit: cover;
-  border-bottom: 1px solid var(--line);
+  object-position: center 2%;
 }
 
 .hero-inline-story > div {
@@ -368,6 +398,10 @@ input:focus {
   margin: 0;
   font-size: 0.94rem;
   color: var(--muted);
+}
+
+.hero-card > .disclosure {
+  margin-top: auto;
 }
 
 .button {
@@ -584,6 +618,7 @@ input:focus {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center top;
 }
 
 .journal-body {
@@ -847,6 +882,10 @@ input:focus {
 @media (max-width: 900px) {
   .hero {
     padding-top: 60px;
+  }
+
+  .hero-copy {
+    min-height: auto;
   }
 
   .section {
